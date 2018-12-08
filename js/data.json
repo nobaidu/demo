@@ -1,6 +1,5 @@
 [
-    {
-     "img": "http://guanyi666.com/wxapp/industry/fuxi.png","title":"福喜",
+    {"img": "http://guanyi666.com/wxapp/industry/fuxi.png","title":"福喜",
      "url": "/pages/lunbo/lunbo?imgUrl=fuxi"},        
     { "img": "http://guanyi666.com/wxapp/industry/p_icon01.png", 
     "url": "/pages/lunbo/lunbo?imgUrl=yiguozhengnengliang","title": "壹锅蒸能量"},
