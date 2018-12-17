@@ -22,31 +22,27 @@
     </style>
 </head>
 <body>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" srcset="">
-            </div>
-            <div class="swiper-slide">
-                <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" alt="" srcset="">
-            </div>
-            <div class="swiper-slide">
-                <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" alt="" srcset="">
-            </div>
-            <div class="swiper-slide">
-                <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg" alt="" srcset="">
-            </div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
+    <div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 3000}">
+        <ul class="am-slides">
+          <li>
+            <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" srcset="">
+          </li>
+          <li>
+            <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg" alt="" srcset="">
+          </li>
+          <li>
+            <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg" alt="" srcset="">
+          </li>
+        </ul>
+      </div>
+
+
 
     <script src="dist/jquery.min.js"></script>
     <script src="dist/amazeui.swiper.min.js"></script>
     <script>
-        $('.swiper-container').swiper({
-            pagination: '.swiper-pagination',
-            paginationClickable: true
+        $('.am-slider').flexslider({
+            playAfterPaused: 3000,
         });
     </script>
 </body>
