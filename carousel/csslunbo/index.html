@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>css轮播</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<style>
+		.out{
+			width: 300px;
+			height: 300px;
+			margin: 20px auto;
+			overflow: hidden;
+			text-align: center;
+		}
+		@keyframes move{
+			0%{transform:translateX(0px);}
+			100%{transform:translateX(-600px);}
+		}
+		.con{
+			width: 900px;
+			height: 300px;
+			overflow: hidden;
+			animation: move 2s linear infinite normal;
+			animation-fill-mode:forwards;
+		}
+		.con img{
+			float: left;
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body cz-shortcut-listen="true">
+	<div class="out">
+		<div class="con">
+			<img src="img/01.jpg" alt="">
+			<img src="img/02.jpg" alt="">
+			
+			<img src="img/01.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>
