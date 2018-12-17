@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'bb';
+    src: url('../font/bb.ttf');
+}
+p{
+    width: 333px;
+    line-height: 2em;
+    font-family: 'bb';
+}
