@@ -19,5 +19,17 @@ function time(){
     }else{
         ap = "PM"
     }
+    console.log(ap,h,m,s)
 }
-time();
+//time();
+function printCon(){
+    var bcon = window.document.body.innerHTML;
+    var ccon = document.getElementsByClassName('Con')[0].innerHTML;
+    window.document.body.innerHTML = ccon;
+    window.print();
+    window.document.body.innerHTML = bcon;
+}
+function printAll(){
+    window.print();
+}
+//print();
