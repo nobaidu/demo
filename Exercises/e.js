@@ -22,14 +22,20 @@ function time(){
     console.log(ap,h,m,s)
 }
 //time();
+
 function printCon(){
-    var bcon = window.document.body.innerHTML;
-    var ccon = document.getElementsByClassName('Con')[0].innerHTML;
-    window.document.body.innerHTML = ccon;
-    window.print();
-    window.document.body.innerHTML = bcon;
+    var bodyHtml = window.document.body.innerHTML;
+    var startPrint = '<!-- 打印开始 -->';
+    var endPrint = '<!-- 打印结束 -->';
+    var printHtml = bodyHtml.substring(bodyHtml.indexOf(startPrint),bodyHtml.indexOf(endPrint));
+    var printIframe = document.getElementById('printIframe');
+    printIframe.contentDocument.write(printHtml);
+    printIframe.contentDocument.close();
+    printIframe.contentWindow.print();
+
+    console.log(printIframe.contentDocument);
 }
-function printAll(){
+document.getElementsByClassName('inputCon')[0].addEventListener('click',printCon);
+document.getElementsByClassName('inputPage')[0].addEventListener('click',function(){
     window.print();
-}
-//print();
+})

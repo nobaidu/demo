@@ -15,12 +15,17 @@
         .Con{
             background: skyblue;
         }
+        /* @media print{
+            .inputCon,.inputPage,.title{
+                display: none;
+            }
+        } */
     </style>
 </head>
 <body>
 
 <div>
-    <p>打印测试</p>
+    <p class="title">打印测试</p>
 
     <!-- 打印开始 -->
     <div class="Con">
@@ -34,8 +39,10 @@
     </div>
     <!-- 打印结束 -->
 
-    <input type="button" value="打印蓝色区域" onclick="printCon()">
-    <input type="button" value="全部打印" onclick="printAll()">
+    <input class="inputCon" type="button" value="打印蓝色区域">
+    <input class="inputPage" type="button" value="全部打印">
+
+    <iframe id="printIframe" src="" width="0" height="0" frameborder="0"></iframe>
 </div>
   
 <script src="e.js"></script>
