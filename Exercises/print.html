@@ -49,5 +49,23 @@
 </div>
   
 <script src="e.js"></script>
+<script>
+    function printCon(){
+        var bodyHtml = window.document.body.innerHTML;
+        var startPrint = '<!-- 打印开始 -->';
+        var endPrint = '<!-- 打印结束 -->';
+        var printHtml = bodyHtml.substring(bodyHtml.indexOf(startPrint),bodyHtml.indexOf(endPrint));
+        var printIframe = document.getElementById('printIframe');
+        printIframe.contentDocument.write(printHtml);
+        printIframe.contentDocument.close();
+        printIframe.contentWindow.print();
+
+        console.log(printIframe.contentDocument);
+    }
+    document.getElementsByClassName('inputCon')[0].addEventListener('click',printCon);
+    document.getElementsByClassName('inputPage')[0].addEventListener('click',function(){
+        window.print();
+    })
+</script>
 </body>
 </html>
