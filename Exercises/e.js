@@ -23,19 +23,27 @@ function time(){
 }
 //time();
 
-function printCon(){
-    var bodyHtml = window.document.body.innerHTML;
-    var startPrint = '<!-- 打印开始 -->';
-    var endPrint = '<!-- 打印结束 -->';
-    var printHtml = bodyHtml.substring(bodyHtml.indexOf(startPrint),bodyHtml.indexOf(endPrint));
-    var printIframe = document.getElementById('printIframe');
-    printIframe.contentDocument.write(printHtml);
-    printIframe.contentDocument.close();
-    printIframe.contentWindow.print();
 
-    console.log(printIframe.contentDocument);
+//4.编写一个 javascript 程序来查找三角形的区域, 其中三个边的长度为 5, 6, 7。
+function area(a,b,c){
+    var s = (a+b+c)/2;
+    var area = Math.sqrt(s*(s-a)*(s-b)*(s-c));
+    console.log(area);
 }
-document.getElementsByClassName('inputCon')[0].addEventListener('click',printCon);
-document.getElementsByClassName('inputPage')[0].addEventListener('click',function(){
-    window.print();
-})
+//area(5,6,7);
+
+//5.编写一个 javascript 程序, 通过定期从字符串末尾删除一个字母并将其附加到前面, 将字符串 "w3resource" 向右反转。
+function rstr(str){
+    var count = 0;
+    var endstr = '';
+        setInterval(function(){
+            if(count<str.length){
+                count++
+                var lice = str.substr(str.length-count,1);
+                endstr+=lice;
+                console.log('第'+count+'次截取字符:',lice);
+                console.log('第'+count+'次拼接字符:',endstr);
+            }
+        },300)
+}
+rstr('js')
