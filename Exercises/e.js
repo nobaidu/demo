@@ -53,4 +53,5 @@ function isrun(year) {
     var x = (year % 100 === 0) ? (year % 400 === 0) : (year % 4 === 0);
     console.log(x);
 }
+
 //isrun(1000);  
