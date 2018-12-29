@@ -1,0 +1,11 @@
+body{font-size: 0.16rem;}
+.head{width: 100%;height: 1rem;background: salmon;}
+.head-nav{width: 12rem;height: 0.5rem;margin: 0.25rem auto;line-height: 0.5rem;display: flex;justify-content: space-around;}
+.head-li{width: 1.5rem;height: 100%;background: wheat;}
+
+.banner{width: 100%;height: 6rem;line-height: 6rem;font-size: 0.8rem;text-align: center;background: sandybrown}
+
+.con{width: 12rem;margin: 0.3rem auto;display: flex;flex-wrap: row wrap}
+.con-item{width: 5rem;height: auto;box-sizing: border-box;flex-grow: 6;}
+.con-item-p{padding: 0.2rem;background: wheat;}
+.con-item-t{padding: 0.3rem;background: orange;text-align: justify;}
