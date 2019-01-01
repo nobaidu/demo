@@ -16,14 +16,14 @@
                 html.style.cssText = 'font-size:' + deviceWidth / 12 + 'px !important';
             }
             function setHtmlFontSizeMb() {
-                deviceWidth = document.documentElement.clientWidth <= 750 ? document.documentElement.clientWidth : 750;
-                html.style.cssText = 'font-size:' + deviceWidth / 7.5 + 'px !important';
+                deviceWidth = document.documentElement.clientWidth <= 768 ? document.documentElement.clientWidth : 768;
+                html.style.cssText = 'font-size:' + deviceWidth / 7.68 + 'px !important';
             }
             setHtmlFontSizePc();
             setHtmlFontSizeMb();
 
             window.addEventListener('resize', function () {
-                if (document.documentElement.clientWidth > 750) {
+                if (document.documentElement.clientWidth > 768) {
                     setHtmlFontSizePc();
                 } else {
                     setHtmlFontSizeMb();
@@ -32,8 +32,7 @@
         })()
     </script>
     <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" media="screen and (max-width:1920px)" href="../css/pc.css">
-    <link rel="stylesheet" media="screen and (max-width:750px)" href="../css/mb.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
@@ -68,6 +67,9 @@
         </div>
     </div>
 
+    <div class="foot">
+        
+    </div>
 </body>
 
 </html>
