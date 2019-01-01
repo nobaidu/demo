@@ -39,6 +39,35 @@ div,nav,header,footer,section,main{overflow: hidden;}
 .tl{text-align: left;}.tc{text-align: center;}.tr{text-align: right;}
 .vt{vertical-align: top;}.vm{vertical-align: middle;}.vb{vertical-align: bottom;} */
 
+/* 头部 */
+body{font-size: 0.16rem;}
+.head{width: 100%;height: 1rem;background: salmon;}
+.head-nav{width: 12rem;height: 0.5rem;margin: 0.25rem auto;line-height: 0.5rem;display: flex;justify-content: space-around;}
+.head-li{width: 1.5rem;height: 100%;background: wheat;margin-top: 0.3rem;}
+.head-li:nth-child(1){margin-top: 3rem;}
 
+/* 底部 */
+.foot{width: 100%;height: 4rem;background: rosybrown;}
+.foot-con{width: 12rem;height: auto;margin: 0.5rem auto;font-size: 0.16rem;color: #fff;}
+.foot-l{width: 4rem;float: left;text-align: center;}
+.foot-l-tel{font-size: 0.25rem;color: #fff;}
+.foot-l-cmp{color: #fff;font-size: 0.2rem;}
+.foot-l-logo{width: 60%;}
 
+.foot-r{width: 8rem;float: right;}
+.input-wrap,.text-wrap{border-bottom: 1px solid #fff;padding-bottom: 0.1rem;}
+.input-wrap{width: 2.5rem;float: left;}
+.input{border: none;background: rosybrown;outline: none;color: #fff;}
+.text-wrap{width: 7.5rem;padding-top: 1rem;}
+.text-wrap input{width: 7rem;color: #fff;}
+.btn-wrap{margin-top: 0.3rem;}
+.btn-wrap button{width: 1rem;height: 0.3rem;background: #fff;border: none;}
 
+@media screen and (max-width: 768px){
+    .foot{width: 100%;height: auto;padding: 0 0.1rem;box-sizing: border-box;}
+    .foot-con{width: 100%;}.foot-r{width: 100%;}
+    .foot-l{width: 100%;}.foot-l-tel{font-size: 0.5rem;}.foot-l-cmp{font-size: 0.3rem;}
+    .input-wrap{width: 100%;margin-top: 0.5rem;}
+    .foot-form{font-size: 0.4rem;}
+    .btn-wrap button{width: 2rem;height: 0.8rem;line-height: 0.8rem;}
+}
