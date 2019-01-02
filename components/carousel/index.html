@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>carousel</title>
+    <style></style>
+  </head>
+  <body>
+    <script>
+      (function(root, factory) {
+          if (typeof define === "function" && define.amd) {
+              define([], factory);
+          } else if (typeof module === "object" && module.exports) {
+              module.exports = factory();
+          } else {
+              root.Carousel = factory();
+          }
+      })(typeof self !== "undefined" ? self: this,
+      function() {
+        "use strict";     // ID-NAMES
+        var ID = {
+            CAROUSEL_WRAP: '#carouselWrap',
+            CAROUSEL_DOTS: '#carouselDots',
+            ARROW_LEFT: '#arrowLeft',
+            ARROW_RIGHT: '#arrowRight'
+            };
+        var CLASS = {
+            CAROUSEL_WRAP: 'carousel-wrap',
+            CAROUSEL_IMG: 'carousel-image',
+            CAROUSEL_DOTS_WRAP: 'carousel-buttons-wrap',
+            CAROUSEL_DOTS: 'carousel-buttons',
+            CAROUSEL_DOT: 'carousel-button',
+            CAROUSEL_DOT_ON: 'carousel-button on',
+            CAROUSEL_ARROW_LEFT: 'carousel-arrow arrow-left',
+            CAROUSEL_ARROW_RIGHT: 'carousel-arrow arrow-right'
+            };     // Polyfills
+            function addEvent(element, type, handler) {
+                if (element.addEventListener) {
+                    element.addEventListener(type, handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = handler;
+                    }
+            }     // 合并对象
+            function extend(o, n, override) {
+                for (var p in n) {
+                    if (n.hasOwnProperty(p) && (!o.hasOwnProperty(p) || override))
+                    o[p] = n[p];
+                }
+            }     // 轮播-构造函数
+            var Carousel = function (selector, userOptions) {
+                var _this = this;                                       // 合并配置
+                extend(this.carouselOptions, userOptions, true);        // 获取轮播元素
+                _this.carousel = document.querySelector(selector);      // 初始化轮播列表
+                _this.carousel.appendChild(_this.getImgs());            // 获取轮播列表
+                _this.carouselWrap = document.querySelector(ID.CAROUSEL_WRAP);       // 每隔 50ms 检测一次轮播是否加载完成
+                var checkInterval = 50;      
+                var checkTimer = setInterval(function () {         // 检测轮播是否加载完成
+                   if (_this.isCarouselComplete()) {           // 加载完成后清除定时器           
+                   clearInterval(checkTimer);           // 初始化轮播           
+                   _this.initCarousel();           // 初始化圆点           
+                   _this.initDots();           // 初识化箭头           
+                   _this.initArrows();         
+                   }       
+                }, checkInterval);     
+            };     // 轮播-原型对象     
+            Carousel.prototype = {       
+                carouselOptions: {         // 是否显示轮播箭头         
+                    showCarouselArrow: true,         // 是否显示轮播圆点         
+                    showCarouselDot: true,         // 轮播自动播放间隔         
+                    carouselInterval: 3000,         // 轮播动画总时间         
+                    carouselAnimateTime: 150,         // 轮播动画间隔         
+                    carouselAnimateInterval: 10       
+                },       
+                isCarouselComplete: function () {         // 检测页面图片是否加载完成         
+                var completeCount = 0;         
+                for (var i = 0; i < this.carouselWrap.children.length; i++) {           
+                    if (this.carouselWrap.children[i].complete) {             
+                        completeCount++;           
+                    }         
+                }    
+                return completeCount === this.carouselWrap.children.length ? true : false;      
+                }     
+            };     
+            
+            return Carousel;
+            });
+    </script>
+  </body>
+</html>
