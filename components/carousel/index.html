@@ -1,93 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>carousel</title>
-    <style></style>
-  </head>
-  <body>
+    <style>
+        .car-wrap{position: relative;width: 900px;height: 600px;margin: 100px auto;
+            box-shadow: 1px 1px 100px silver;overflow: hidden;}
+        .car-tab{width: 300%;height: 100%;}
+        .car-tab .tab-item{float: left;width: 900px;height: 100%;text-align: center;font-size: 100px;
+            line-height: 600px;background: snow;}
+
+        .car-arr{position: absolute;top: 45%;padding: 0 15px;z-index: 99;width: 100%;box-sizing: border-box;}
+        .car-arr div{width: 50px;height: 50px;color: brown;line-height: 45px;text-align: center;background: skyblue;
+            font-size: 30px;font-weight: bolder;cursor: pointer;}
+        .car-arr .car-l{float: left;}.car-arr .car-r{float: right;}
+    </style>
+</head>
+<body>
+    <div class="car-wrap">
+        <div class="car-tab">
+            <div class="tab-item">ban1</div>
+            <div class="tab-item">ban2</div>
+            <div class="tab-item">ban3</div>
+        </div>
+        <div class="car-arr">
+            <div class="car-l"> < </div>
+            <div class="car-r"> > </div>
+        </div>           
+    </div>
+
     <script>
-      (function(root, factory) {
-          if (typeof define === "function" && define.amd) {
-              define([], factory);
-          } else if (typeof module === "object" && module.exports) {
-              module.exports = factory();
-          } else {
-              root.Carousel = factory();
-          }
-      })(typeof self !== "undefined" ? self: this,
-      function() {
-        "use strict";     // ID-NAMES
-        var ID = {
-            CAROUSEL_WRAP: '#carouselWrap',
-            CAROUSEL_DOTS: '#carouselDots',
-            ARROW_LEFT: '#arrowLeft',
-            ARROW_RIGHT: '#arrowRight'
-            };
-        var CLASS = {
-            CAROUSEL_WRAP: 'carousel-wrap',
-            CAROUSEL_IMG: 'carousel-image',
-            CAROUSEL_DOTS_WRAP: 'carousel-buttons-wrap',
-            CAROUSEL_DOTS: 'carousel-buttons',
-            CAROUSEL_DOT: 'carousel-button',
-            CAROUSEL_DOT_ON: 'carousel-button on',
-            CAROUSEL_ARROW_LEFT: 'carousel-arrow arrow-left',
-            CAROUSEL_ARROW_RIGHT: 'carousel-arrow arrow-right'
-            };     // Polyfills
-            function addEvent(element, type, handler) {
-                if (element.addEventListener) {
-                    element.addEventListener(type, handler, false);
-                } else if (element.attachEvent) {
-                    element.attachEvent("on" + type, handler);
-                } else {
-                    element["on" + type] = handler;
-                    }
-            }     // 合并对象
-            function extend(o, n, override) {
-                for (var p in n) {
-                    if (n.hasOwnProperty(p) && (!o.hasOwnProperty(p) || override))
-                    o[p] = n[p];
+        function carousel(){
+            var carT = document.querySelector('.car-tab');
+            var carI = document.querySelectorAll('.tab-item');
+            var arrL = document.querySelector('.car-l');
+            var arrR = document.querySelector('.car-r');
+
+            var count = 0;
+            arrR.addEventListener('click',function(){
+                count++;
+                if(count<carI.length){
+                    carT.style = 'transform:translateX('+-900*count+'px)';
                 }
-            }     // 轮播-构造函数
-            var Carousel = function (selector, userOptions) {
-                var _this = this;                                       // 合并配置
-                extend(this.carouselOptions, userOptions, true);        // 获取轮播元素
-                _this.carousel = document.querySelector(selector);      // 初始化轮播列表
-                _this.carousel.appendChild(_this.getImgs());            // 获取轮播列表
-                _this.carouselWrap = document.querySelector(ID.CAROUSEL_WRAP);       // 每隔 50ms 检测一次轮播是否加载完成
-                var checkInterval = 50;      
-                var checkTimer = setInterval(function () {         // 检测轮播是否加载完成
-                   if (_this.isCarouselComplete()) {           // 加载完成后清除定时器           
-                   clearInterval(checkTimer);           // 初始化轮播           
-                   _this.initCarousel();           // 初始化圆点           
-                   _this.initDots();           // 初识化箭头           
-                   _this.initArrows();         
-                   }       
-                }, checkInterval);     
-            };     // 轮播-原型对象     
-            Carousel.prototype = {       
-                carouselOptions: {         // 是否显示轮播箭头         
-                    showCarouselArrow: true,         // 是否显示轮播圆点         
-                    showCarouselDot: true,         // 轮播自动播放间隔         
-                    carouselInterval: 3000,         // 轮播动画总时间         
-                    carouselAnimateTime: 150,         // 轮播动画间隔         
-                    carouselAnimateInterval: 10       
-                },       
-                isCarouselComplete: function () {         // 检测页面图片是否加载完成         
-                var completeCount = 0;         
-                for (var i = 0; i < this.carouselWrap.children.length; i++) {           
-                    if (this.carouselWrap.children[i].complete) {             
-                        completeCount++;           
-                    }         
-                }    
-                return completeCount === this.carouselWrap.children.length ? true : false;      
-                }     
-            };     
-            
-            return Carousel;
-            });
+            },false)
+        }
+        carousel()
     </script>
-  </body>
+</body>
 </html>
