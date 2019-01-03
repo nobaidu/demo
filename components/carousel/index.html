@@ -8,9 +8,9 @@
     <style>
         .car-wrap{position: relative;width: 900px;height: 600px;margin: 100px auto;
             box-shadow: 1px 1px 100px silver;overflow: hidden;}
-        .car-tab{width: 300%;height: 100%;}
+        .car-tab{position: absolute;width: 500%;height: 100%;}
         .car-tab .tab-item{float: left;width: 900px;height: 100%;text-align: center;font-size: 100px;
-            line-height: 600px;background: snow;}
+            line-height: 600px;background: snow;transition: all 0.3s;}
 
         .car-arr{position: absolute;top: 45%;padding: 0 15px;z-index: 99;width: 100%;box-sizing: border-box;}
         .car-arr div{width: 50px;height: 50px;color: brown;line-height: 45px;text-align: center;background: skyblue;
@@ -24,6 +24,8 @@
             <div class="tab-item">ban1</div>
             <div class="tab-item">ban2</div>
             <div class="tab-item">ban3</div>
+            <div class="tab-item">ban4</div>
+            <div class="tab-item">ban5</div>
         </div>
         <div class="car-arr">
             <div class="car-l"> < </div>
@@ -32,21 +34,36 @@
     </div>
 
     <script>
-        function carousel(){
-            var carT = document.querySelector('.car-tab');
-            var carI = document.querySelectorAll('.tab-item');
-            var arrL = document.querySelector('.car-l');
-            var arrR = document.querySelector('.car-r');
 
+        function carousel(){
+            var slidesWraper = document.querySelector('.car-tab');
+            var slides = document.querySelectorAll('.tab-item');
+            var arrLeft = document.querySelector('.car-l');
+            var arrRight = document.querySelector('.car-r');
             var count = 0;
-            arrR.addEventListener('click',function(){
-                count++;
-                if(count<carI.length){
-                    carT.style = 'transform:translateX('+-900*count+'px)';
-                }
-            },false)
+
+            function toLeft(){
+                clearInterval(timer)
+                count --;
+                if(count == -1){ count = slides.length-1 }
+                slidesWraper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
+
+            }
+            function toRight(){
+                count ++;
+                if(count == slides.length){ count = 0 }
+                slidesWraper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
+            }
+            
+            arrLeft.addEventListener('click',toLeft,false)
+
+            arrRight.addEventListener('click',toRight,false)
+
+            var timer = setInterval(toRight,5000)
+            
+
         }
-        carousel()
+        carousel();
     </script>
 </body>
 </html>
