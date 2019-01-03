@@ -6,67 +6,68 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>carousel</title>
     <style>
-        .car-wrap{position: relative;width: 900px;height: 600px;margin: 100px auto;
+        .banner{position: relative;width: 900px;height: 600px;margin: 100px auto;
             box-shadow: 1px 1px 100px silver;overflow: hidden;}
-        .car-tab{position: absolute;width: 500%;height: 100%;}
-        .car-tab .tab-item{float: left;width: 900px;height: 100%;text-align: center;font-size: 100px;
+        .banner-wrapper{position: absolute;width: 500%;height: 100%;}
+        .banner-wrapper .banner-slider{float: left;width: 900px;height: 100%;text-align: center;font-size: 100px;
             line-height: 600px;background: snow;transition: all 0.3s;}
 
-        .car-arr{position: absolute;top: 45%;padding: 0 15px;z-index: 99;width: 100%;box-sizing: border-box;}
-        .car-arr div{width: 50px;height: 50px;color: brown;line-height: 45px;text-align: center;background: skyblue;
+        .banner-pagination{position: absolute;top: 45%;padding: 0 15px;z-index: 99;width: 100%;box-sizing: border-box;}
+        .banner-pagination div{width: 50px;height: 50px;color: brown;line-height: 45px;text-align: center;background: skyblue;
             font-size: 30px;font-weight: bolder;cursor: pointer;}
-        .car-arr .car-l{float: left;}.car-arr .car-r{float: right;}
+        .banner-pagination .banner-prev{float: left;}
+        .banner-pagination .banner-next{float: right;}
     </style>
 </head>
 <body>
-    <div class="car-wrap">
-        <div class="car-tab">
-            <div class="tab-item">ban1</div>
-            <div class="tab-item">ban2</div>
-            <div class="tab-item">ban3</div>
-            <div class="tab-item">ban4</div>
-            <div class="tab-item">ban5</div>
+    <div class="banner">
+        <div class="banner-wrapper">
+            <div class="banner-slider">ban1</div>
+            <div class="banner-slider">ban2</div>
+            <div class="banner-slider">ban3</div>
+            <div class="banner-slider">ban4</div>
+            <div class="banner-slider">ban5</div>
         </div>
-        <div class="car-arr">
-            <div class="car-l"> < </div>
-            <div class="car-r"> > </div>
+        <div class="banner-pagination">
+            <div class="banner-prev"> < </div>
+            <div class="banner-next"> > </div>
         </div>           
     </div>
 
     <script>
 
         function carousel(){
-            var banner = document.querySelector('.car-wrap');
-            var slidesWraper = document.querySelector('.car-tab');
-            var slides = document.querySelectorAll('.tab-item');
-            var arrLeft = document.querySelector('.car-l');
-            var arrRight = document.querySelector('.car-r');
+            var banner = document.querySelector('.banner');
+            var wrapper = document.querySelector('.banner-wrapper');
+            var sliders = document.querySelectorAll('.banner-slider');
+            var prev = document.querySelector('.banner-prev');
+            var next = document.querySelector('.banner-next');
             var count = 0;
 
-            function toLeft(){
+            function toPrev(){
                 clearInterval(timer)
                 count --;
-                if(count == -1){ count = slides.length-1 }
-                slidesWraper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
+                if(count == -1){ count = sliders.length-1 }
+                wrapper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
             }
             
-            function toRight(){
+            function toNext(){
                 count ++;
-                if(count == slides.length){ count = 0 }
-                slidesWraper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
+                if(count == sliders.length){ count = 0 }
+                wrapper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
             }
             
-            arrLeft.addEventListener('click',toLeft,false)
+            prev.addEventListener('click',toPrev,false)
 
-            arrRight.addEventListener('click',toRight,false)
+            next.addEventListener('click',toNext,false)
             
-            var timer = setInterval(toRight,3000)
+            var timer = setInterval(toNext,3000)
 
             banner.addEventListener('mouseover',function(){
                 clearInterval(timer);
             })
             banner.addEventListener('mouseout',function(){
-                timer = setInterval(toRight,3000)
+                timer = setInterval(toNext,3000)
             })
         }
         carousel();
