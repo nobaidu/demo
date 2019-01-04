@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+}
+.div1 {
+  margin: 100px auto;
+  width: 800px;
+  height: 600px;
+  box-shadow: 10px 10px 100px 10px #808080;
+}
+.div1-body {
+  position: absoulte;
+  width: auto;
+  height: auto;
+  padding: 50px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  background: #808080;
+}
