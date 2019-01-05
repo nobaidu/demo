@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lib</title>
+    <script src="lib.js"></script>
+    <style>
+        #div{color: salmon;}
+    </style>
+</head>
+<body>
+<div id="div">div</div>
+<p class="p">p</p>
+<span class="ele">span</span>
+
+<script>
+    
+    window.onload = function(){
+        
+        var body = document.querySelector('#div');
+
+        //类
+        LIB().getId('div').css('color','pink');
+        //内容textContent
+        console.log(LIB().getId('div').text());
+        //getComputedStyle
+        console.log(window.getComputedStyle(body))
+
+        //获单独css
+        console.log(LIB().getId('div').css('color'));
+
+        //_this
+        LIB().getId('div').click(function(){
+            LIB(this).text('_this -> click')
+        })
+    }
+
+    
+</script>
+</body>
+</html>
