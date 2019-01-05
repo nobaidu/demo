@@ -11,17 +11,21 @@ bs(x y z m n)
 body
     mar(0)
 .div1
+    position relative
     mar(100px auto)
     w(800px) 
     h(600px)
     bs (10px 10px 100px 10px gray)
 .div1-body
-    position absoulte
-    width w = auto
-    height h = auto
-    pad(50px)
-    mar(0 auto)
+    position absolute
+    width w = 300px
+    height h = 150px
     top 50% 
     left 50%
+    margin-left -(w/2)
+    margin-top -(h/2)
     display inline-block
     background gray
+    text-align center
+    line-height 150px
+ 
