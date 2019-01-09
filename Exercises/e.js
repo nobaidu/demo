@@ -55,3 +55,14 @@ function isrun(year) {
 }
 
 //isrun(1000);  
+
+//7.自加函数
+var add = (function() {
+    // 声明一变量,由于下面 return所以变量只会声明一次
+    var count = 0; 
+    return function() {
+      return console.log(count++);
+    };
+})();
+add();
+add();
