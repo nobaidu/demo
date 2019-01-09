@@ -45,7 +45,6 @@
     <input class="inputCon" type="button" value="打印蓝色区域">
     <input class="inputPage" type="button" value="全部打印">
 
-    <iframe id="printIframe" src="" width="0" height="0" frameborder="0"></iframe>
 </div>
   
 <script src="e.js"></script>
@@ -55,17 +54,15 @@
         var startPrint = '<!-- 打印开始 -->';
         var endPrint = '<!-- 打印结束 -->';
         var printHtml = bodyHtml.substring(bodyHtml.indexOf(startPrint),bodyHtml.indexOf(endPrint));
-        var printIframe = document.getElementById('printIframe');
-        printIframe.contentDocument.write(printHtml);
-        printIframe.contentDocument.close();
-        printIframe.contentWindow.print();
-
-        console.log(printIframe.contentDocument);
+        window.document.body.innerHTML = printHtml;
+        window.print();
+        history.go(0);
+    }
+    function printPage(){
+        window.print();
     }
     document.getElementsByClassName('inputCon')[0].addEventListener('click',printCon);
-    document.getElementsByClassName('inputPage')[0].addEventListener('click',function(){
-        window.print();
-    })
+    document.getElementsByClassName('inputPage')[0].addEventListener('click',printPage);
 </script>
 </body>
 </html>
