@@ -6,29 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>webrem</title>
+    <script src="../js/rem.js"></script>
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
-    <script src="../js/common.js"></script>
 </head>
-
 <body>
 
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">您的浏览器<strong>过时了</strong>请升级您的浏览器提高安全和体验权限。</p>
-    <![endif]-->
+    <header class="head">
+        <div class="head-content">
+            <a class="head-logo" href="">
+                <img src="../imgs/logo.png" alt="" srcset="">
+            </a>
+            <nav class="head-nav">
+                <ul class="nav-ul">
+                    <li class="nav-li"><a class="nav-a" href="">首页</a></li>
+                    <li class="nav-li"><a class="nav-a" href="">关于</a></li>
+                    <li class="nav-li"><a class="nav-a" href="">产品</a></li>
+                    <li class="nav-li"><a class="nav-a" href="">新闻</a></li>
+                    <li class="nav-li"><a class="nav-a" href="">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="head">
-        <ul class="head-nav">
-            <li class="head-li">首页</li>
-            <li class="head-li">关于</li>
-            <li class="head-li">产品</li>
-            <li class="head-li">新闻</li>
-            <li class="head-li">联系</li>
-        </ul>
-    </div>
-
-    <div class="banner">
-        banner
+    <div class="banner swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img class="pc-banner" src="../imgs/banner1.jpg" alt="" srcset="">
+                <img class="m-banner" src="../imgs/m-banner1.jpg" alt="" srcset="">
+            </div>
+            <div class="swiper-slide">
+                <img class="pc-banner" src="../imgs/banner2.jpg" alt="" srcset="">
+                <img class="m-banner" src="../imgs/m-banner2.jpg" alt="" srcset="">
+            </div>
+            <div class="swiper-slide">
+                <img class="pc-banner" src="../imgs/banner3.jpg" alt="" srcset="">
+                <img class="m-banner" src="../imgs/m-banner3.jpg" alt="" srcset="">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
     </div>
 
     <div class="con">
@@ -55,25 +73,27 @@
             <div class="foot-l">
                 <p class="foot-l-tel">400-0560-799</p>
                 <p class="foot-l-cmp">济南悦顺餐饮管理有限公司</p>
-                <img class="foot-l-logo" src="https://www.jinanyueshun.com/public/uploads/images/20180719/f643e1c2bc56ce0d7f4d0c337f9de2bf.png"
-                    alt="">
+                <img class="foot-l-logo" src="../imgs/logo.png" alt="">
             </div>
             <div class="foot-r">
                 <form class="foot-form" action="">
                     <div class="input-wrap">
-                        <label for="name">姓名：</label><input type="text" class="name input">
+                        <label for="name">姓名：</label>
+                        <input type="text" class="name input">
                     </div>
                     <div class="input-wrap">
-                        <label for="tel">电话：</label><input type="text" class="tel input">
+                        <label for="tel">电话：</label>
+                        <input type="text" class="tel input">
                     </div>
                     <div class="input-wrap">
-                        <label for="email">邮箱：</label><input type="text" class="email input">
+                        <label for="email">邮箱：</label>
+                        <input type="text" class="email input">
                     </div>
-                    <div class="text-wrap">
+                    <div class="input-wrap">
                         <label for="text">留言：</label>
                         <input type="text" class="input">
                     </div>
-                    
+
                     <div class="btn-wrap">
                         <button class="btn" type="submit">提交</button>
                     </div>
@@ -82,8 +102,39 @@
         </div>
     </div>
 
-    <script src="../js/modernizr-3.6.0.min.js"></script>
-    <script src="../js/jquery-2.2.0.min.js"></script>
+    <script src="../js/modernizr.min.js"></script>
+    <script src="../js/index.min.js"></script>
+
+    <script>
+        /*swiper*/
+        var mySwiper = new Swiper('.banner', {
+            loop: true,
+            lazy: true,
+            effect: 'fade',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            autoplay: {
+                delay: 6000,
+                stopOnlastSlide: true,
+                disableOnInteraction: false
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
