@@ -1,20 +1,49 @@
-.banner{width: 100%;height: 6rem;line-height: 6rem;font-size: 0.8rem;text-align: center;background: sandybrown}
+/* 轮播图 */
+.banner {
+    max-height: 100vh;
+    margin-top: 0;
+}
 
-.con{width: 12rem;margin: 0.3rem auto;}
-.con-item{width: 5rem;height: auto;box-sizing: border-box;display: inline-block;margin:0rem 0.48rem;}
-.con-item-p{padding: 0.2rem;background: wheat;}
-.con-item-t{padding: 0.3rem;background: orange;text-align: justify;}
+.m-banner {
+    display: none;
+}
 
-@media screen and (max-width: 768px){
-    body{width: 100vw;height: auto;overflow-x: hidden;}    
-    .head{width: 100%;height: 100vh;display: none;}
-    .head-nav{width: 100%;height: 100vw;display: block;}
-    .head-li{width: 100%;height: 20vw;display: block;text-align: center;line-height: 20vw;}
-    
-    .banner{height: 100vh;}
-    .banner image{height: 100vh;}
+.swiper-slide image {
+    width: 100%;
+    height: auto;
+}
 
-    .con{width: 100%;}
-    .con-item{width: 44%;margin: 0 0.2rem} 
-    
+.swiper-pagination {
+    bottom: 0.35rem !important;
+}
+
+.swiper-pagination-bullet {
+    opacity: 1;
+    width: 0.15rem;
+    height: 0.15rem;
+    background: #fff;
+}
+
+.swiper-pagination-bullet-active {
+    width: 0.3rem;
+    border-radius: 0.1rem;
+    -webkit-border-radius: 0.1rem;
+    -moz-border-radius: 0.1rem;
+    -ms-border-radius: 0.1rem;
+    -o-border-radius: 0.1rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .banner {
+        height: 100vh;
+    }
+
+    .pc-banner {
+        display: none;
+    }
+
+    .m-banner {
+        display: block;
+    }
 }
