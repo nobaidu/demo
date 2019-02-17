@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <meta name="keywords" content="烤鱼">
+    <meta name="description" content="烤鱼">
+    <script src="../js/rem.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/new.css">
+</head>
+<body>
+    <main class="main">
+        <div class="n-banner">
+            <img src="../imgs/zhaopai/banner.jpg" alt="" srcset="">
+        </div>
+        <div class="main-con">
+            <div class="title">
+                <span class="title-span">新</span>
+                <span class="title-span">闻</span>
+                <span class="title-span">详</span>
+                <span class="title-span">情</span>
+            </div>
+            <div class="new-detail">
+                <p class="new-detail-title">{dede:field.title/}</p>
+                <p class="new-detail-time">时间：{dede:field name='pubdate' function='GetDateMk(@me)'/}</p>
+                <p class="new-detail-con">
+                    {dede:field.body/}
+                </p>
+                <div class="news_btn">
+                    <span>{dede:prenext get='pre'/}</span>
+                    <span>{dede:prenext get='next'/}</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/modernizr.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/scrollReveal.js"></script>
+    <script src="../js/common.js"></script>
+</body>
+</html>

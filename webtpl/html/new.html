@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <meta name="keywords" content="烤鱼">
+    <meta name="description" content="烤鱼">
+    <script src="../js/rem.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/new.css">
+</head>
+<body>
+    {dede:include filename='head.html'/}
+
+    <main class="main">
+        <div class="n-banner">
+            <img src="../imgs/xinwen/banner.jpg" alt="" srcset="">
+        </div>
+        <div class="main-con">
+            <div class="title">
+                <span class="title-span">新</span>
+                <span class="title-span">闻</span>
+                <span class="title-span">资</span>
+                <span class="title-span">讯</span>
+            </div>
+
+            <div class="news-list">
+                {dede:list pagesize='5' orderby='pubdate'}
+                    <a class="new-item" href="[field:arcurl/]">
+                        <div class="new-img">[field:image/]</div>
+                        <div class="new-con">
+                            <p class="new-con-title">[field:title/]</p>
+                            <p class="new-con-brief">[field:description /]</p>
+                            <p class="new-con-time">[field:pubdate function="GetDateMK(@me)"/]</p>
+                        </div>
+                    </a>
+                {/dede:list}                    
+              
+                <div class="news-page">{dede:pagelist listitem="index,end,pre,next,pageno" listsize="5"/}</div>
+            </div>
+        </div>
+    </main>
+
+    {dede:include filename='foot.html'/}
+    <script src="../js/modernizr.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/scrollReveal.js"></script>
+    <script src="../js/common.js"></script>
+</body>
+</html>
