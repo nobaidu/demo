@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>seach</title>
+    <style>
+        .search{width: 270px;height: auto;margin: 100px auto;font-size: 14px;position: relative;z-index: 99999;}
+        .ipt-label{display: block;font-size: 12px;color: brown;letter-spacing: 1px;margin: 5px;font-weight: bold;}
+        .search-icon{width: 28px;height: auto;position: absolute;top: 3px;left: 2px;}
+        #ipt{width: 200px;height: 35px;padding-left: 35px;box-sizing: border-box;outline: none;letter-spacing: 1px;font-size: 14px;
+        border: 1px solid #ccc;}
+
+        #btn{width: 60px;height: 35px;margin-left: 10px;box-sizing: border-box;background: brown;color: #fff;
+            cursor: pointer;border: none;outline: none;}
+        .res{width: 200px;margin-top: -1px;box-shadow: 1px 1px 10px 0px #ccc;border: 1px solid #ccc;
+            padding: 0;box-sizing: border-box;background: #fff;transition: all .3s;}
+        .res-item{list-style: none;color: #000;letter-spacing: 1px;box-sizing: border-box;}
+        .res-item-link{display: block;width: 100%;padding: 7px 0 7px 35px;height: auto;color: #000;text-decoration: none;background: #fff;
+        box-sizing: border-box;}
+        .res-item-link:hover{background: #eee;}
+    </style>
+</head>
+<body>
+    <div class="search">
+        <!-- <label for="ipt" class="ipt-label"></label> -->
+        <img class="search-icon" src="search.png" alt="" srcset="">
+        <input id="ipt" value="" maxlength="8" type="search" placeholder="请输入项目名" 
+            onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))">
+        <!-- <input id="btn" type="button" value="提交"> -->
+        <ul class="res">
+           <!-- <li class="res-item"><a class="res-item-link" target="_blank" href="">汉堡城</a></li> -->
+        </ul>
+    </div>
+
+    <script src="dataList.js"></script>
+    <script>
+
+        /**
+         * 1.输入判断
+         *  无输入(输入后删除 无输入) 
+         *  提交(Enter键 Button按钮)
+         *   
+         * 2.输入匹配
+         * 
+         * 
+         * */
+
+        window.onload = function() {
+            
+            var ipt = document.getElementById('ipt'),
+                btn = document.getElementById('btn'),
+                res = document.getElementsByClassName('res')[0],
+                label = document.getElementsByClassName('ipt-label')[0],
+                item_link = document.getElementsByClassName('res-item-link');
+
+            // 获取输入  
+            getValue()                
+            function getValue(){
+                ipt.onkeyup = function () {
+                    res.style.display = 'block';
+                    var matchDataList = [],indexList;
+                    this.value = this.value.replace(/[^\u4E00-\u9FA5]/g, '');
+                    //下标数组
+                    if(this.value == ''){
+                        res.innerHTML = '请输入项目名';
+                        res.style.display = 'none';
+                    }else{
+                        indexList = unique(matchID(this.value));
+                        for (let i = 0; i < indexList.length; i++) {
+                            matchDataList.push({
+                                id: indexList[i],
+                                name: dataList[indexList[i]]['name'],
+                                url: dataList[indexList[i]]['url'],
+                                content: dataList[indexList[i]]['content']
+
+                            })
+                        }
+                        if (matchDataList.length == 0) {
+                            res.innerHTML = '没有该项目';
+                        } else {
+                            contactHtml(matchDataList);
+                            addEvent();
+                        }
+                    }
+                }
+            }
+
+            // 拼接字符串
+            function contactHtml(strDataList){
+                var resHtml = '';
+                for (let i = 0; i < strDataList.length; i++) {
+                    resHtml +=
+                        '<li class="res-item">' +
+                        '<a class="res-item-link" target="_blank" href="' + strDataList[i].url + '">' + strDataList[i].name + '</a>' +
+                        '</li>'
+                }
+                res.innerHTML = resHtml;
+            }
+
+            // 元素点击事件
+            function addEvent(){
+                for (let i = 0; i < item_link.length; i++) {
+                    item_link[i].addEventListener('click',function(){
+                        ipt.value = this.innerHTML;
+                        res.style.display = 'none';
+                    })
+                    
+                }
+            }
+           
+            // 匹配项目名是否存在
+            function matchID(inputValue) {
+                var dataIdList = [];
+                for (let i = 0; i < dataList.length; i++) {
+                    if (dataList[i]['tags'].indexOf(inputValue) != -1) {
+                        dataIdList.push(i);
+                    }
+                }
+                return dataIdList;
+            }
+
+            // 匹配结果去重 获取下标
+            function unique(matchIdList){
+                var queIdList = [];
+                for (let i = 0; i < matchIdList.length; i++) {
+                    if (queIdList.indexOf(matchIdList[i]) === -1) {
+                        queIdList.push(matchIdList[i])
+                    }
+                }
+                return queIdList;
+            }
+
+             // 匹配项目名中存在的汉子
+            // function matchID(inputValue){
+            //     var dataIdList = [];
+            //     for (let i = 0; i < dataList.length; i++) {
+            //        for (let j = 0; j < dataList[i]['tags'].length; j++) {
+            //             if (inputValue.indexOf(dataList[i]['tag'][j])>-1) {
+            //                 dataIdList.push(i);
+            //             }                       
+            //        }
+            //     }
+
+            //     return dataIdList;
+            // }
+
+            // 匹配项目名获取下标列表
+        }
+        
+    </script>
+</body>
+</html>
