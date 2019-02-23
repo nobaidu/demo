@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AudioContext</title>
+    <style>
+        #iframeAudio,#autoAudio{display: none;}
+        @keyframes move{
+            0%{transform: rotate(0)}
+            100%{transform: rotate(360deg)}
+        }
+        .rotate{animation: move linear 10s infinite forwards;}
+    </style>
+</head>
+<body>
+
+    <img class="musicIcon" src="music.png" alt="" srcset="">
+    <iframe id="iframeAudio" name="iframeAudio" src="gy.mp3" allow="autoplay"></iframe>
+    <audio id="autoAudio" autoplay loop>
+        <source src="gy.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        window.onload = function() {
+            var musicIcon = document.querySelector('.musicIcon');
+            musicIcon.classList.add('rotate')
+
+            var ifAudio = document.querySelector('#iframeAudio');
+            var autoAudio = document.querySelector('#autoAudio');
+            var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            // 能自动播放
+            if (!isChrome) {
+                //移除iframe
+                ifAudio.parentNode.removeChild(ifAudio);
+
+                musicIcon.addEventListener('touchstart',function(){
+                    if(autoAudio.paused){
+                        autoAudio.play()
+                        musicIcon.classList.add('rotate')
+                        console.log('audio音乐播放...')
+                    }else{
+                        autoAudio.pause()
+                        musicIcon.classList.remove('rotate')
+                        console.log('audio音乐暂停...')
+                    }
+                })
+
+            }
+            // 不能自动播放
+            else {
+                // 移除audio
+                autoAudio.parentNode.removeChild(autoAudio);
+                var iframevideo = window.frames[0].document.getElementsByTagName('video')[0];
+                musicIcon.addEventListener('touchstart',function(){
+                    // console.log(iframevideo)
+                    if (iframevideo.paused) {
+                        iframevideo.play()
+                        musicIcon.classList.add('rotate')
+                        console.log('iframe音乐播放...')
+                    } else {
+                        iframevideo.pause()
+                        musicIcon.classList.remove('rotate')
+                        console.log('iframe音乐暂停...')
+                    }
+                })
+
+            }
+        }
+            
+            
+    </script>
+</body>
+</html>
