@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>carousel</title>
+    <style>
+        .banner{position: relative;width: 900px;height: 600px;margin: 100px auto;
+            box-shadow: 1px 1px 100px silver;overflow: hidden;}
+        .banner-wrapper{position: absolute;width: 500%;height: 100%;}
+        .banner-wrapper .banner-slider{float: left;width: 900px;height: 100%;text-align: center;font-size: 100px;
+            line-height: 600px;background: snow;transition: all 0.3s;}
+
+        .banner-pagination{position: absolute;top: 45%;padding: 0 15px;z-index: 99;width: 100%;box-sizing: border-box;}
+        .banner-pagination div{width: 50px;height: 50px;color: brown;line-height: 45px;text-align: center;background: skyblue;
+            font-size: 30px;font-weight: bolder;cursor: pointer;}
+        .banner-pagination .banner-prev{float: left;}
+        .banner-pagination .banner-next{float: right;}
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-wrapper">
+            <div class="banner-slider">ban1</div>
+            <div class="banner-slider">ban2</div>
+            <div class="banner-slider">ban3</div>
+            <div class="banner-slider">ban4</div>
+            <div class="banner-slider">ban5</div>
+        </div>
+        <div class="banner-pagination">
+            <div class="banner-prev"> < </div>
+            <div class="banner-next"> > </div>
+        </div>           
+    </div>
+
+    <script>
+
+        function carousel(){
+            var banner = document.querySelector('.banner');
+            var wrapper = document.querySelector('.banner-wrapper');
+            var sliders = document.querySelectorAll('.banner-slider');
+            var prev = document.querySelector('.banner-prev');
+            var next = document.querySelector('.banner-next');
+            var count = 0;
+
+            function toPrev(){
+                clearInterval(timer)
+                count --;
+                if(count == -1){ count = sliders.length-1 }
+                wrapper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
+            }
+            
+            function toNext(){
+                count ++;
+                if(count == sliders.length){ count = 0 }
+                wrapper.style = 'transition:all 0.3s;transform:translateX('+-900*count+'px)';
+            }
+            
+            prev.addEventListener('click',toPrev,false)
+
+            next.addEventListener('click',toNext,false)
+            
+            var timer = setInterval(toNext,3000)
+
+            banner.addEventListener('mouseover',function(){
+                clearInterval(timer);
+            })
+            banner.addEventListener('mouseout',function(){
+                timer = setInterval(toNext,3000)
+            })
+        }
+        carousel();
+    </script>
+</body>
+</html>

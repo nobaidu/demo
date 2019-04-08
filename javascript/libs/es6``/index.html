@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+        box-sizing: border-box;
+        }
+
+        .employee-list {
+        background: lavender;
+        padding: 2rem 0.5rem;
+        border: 1px solid royalblue;
+        border-radius: 0.5rem;
+        max-width: 320px;
+        }
+
+        .employee {
+        list-style: none;
+        }
+
+        .employee + .employee {
+        padding-top: 0.5rem;
+        }
+
+        .employee:after {
+        content: ' ';
+        height: 0;
+        display: block;
+        clear: both;
+        }
+
+        .employee-photo {
+        float: left;
+        padding: 0 0.5rem 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h3>Check out our lastest hires! <small>Straight from our employee API!</small></h3>
+    <ul class="employee-list js-employee-list"></ul>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+                // wrap things in an IIFE to keep them neatly isolated from other code.
+        (() => {
+        // strict mode to prevent errors and enable some ES6 features
+        'use strict'
+        
+        // takes an employee and turns it into a block of markup
+        function employee_markup (employee) {
+            return `<li class="employee">
+                <img src="${employee.picture.thumbnail}" alt="Photo of ${employee.name.first}" class="employee-photo">
+                <div class="employee-name">${employee.name.first} ${employee.name.last}</div>
+                <div class="employee-location">${employee.location.city}, ${employee.location.state}</div>
+            </li>`
+        }
+        
+        // let's use jQuery's ajax method to keep the code terse.
+        // Pull data from randomuser.me as a stub for our 'employee API'
+        // (recall that this is really just a fake tweet list).
+        $.ajax({
+            url: 'https://randomuser.me/api/',
+            dataType: 'json',
+            // query string parameters to append
+            data: {
+                results: 10
+            },
+            success: (data) => {
+            // success! we got the data!
+            console.log(data.results);
+            let employees_markup = ''
+            data.results.forEach((employee) => {
+                employees_markup += employee_markup(employee)
+            })
+            $('.js-employee-list').append(employees_markup)
+            }
+        })
+        })()
+    </script>
+</body>
+</html>
