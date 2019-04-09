@@ -1,0 +1,153 @@
+body {
+    background: skyblue;
+}
+
+span {
+    margin: 50px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    font-size: 0;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 100px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    vertical-align: top;
+    background: sandybrown;
+}
+
+span::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 4px solid sandybrown;
+    transition: all 0.3s;
+}
+
+span::before {
+    position: relative;
+    display: block;
+    width: 92px;
+    height: 92px;
+    margin: 4px;
+    border-radius: 50%;
+    line-height: 92px;
+}
+
+span,
+span:hover,
+span::after,
+span::after:hover {
+    transition: all 0.3s;
+}
+
+/* span1*/
+.span1:hover::after {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* span2 */
+.span2 {
+    background: none;
+    border: 4px solid sandybrown;
+}
+
+.span2::after {
+    opacity: 1;
+    border: none;
+    background: sandybrown;
+}
+
+.span2:hover::after {
+    transform: scale(0.9);
+}
+
+/* span3 */
+.span3::after {
+    opacity: 1;
+    border: 5px solid sandybrown;
+}
+
+.span3:hover::after {
+    opacity: 0;
+    transform: scale(1.2);
+}
+
+/* span4 */
+.span4 {
+    z-index: 10;
+    font-size: 14px;
+    background: none;
+    border: none;
+}
+
+.span4::before {
+    position: relative;
+    z-index: 1;
+    content: 'span4';
+    background: sandybrown;
+}
+
+.span4::after {
+    opacity: 1;
+    box-sizing: border-box;
+    border: 4px solid sandybrown;
+}
+
+.span4:hover::after {
+    border: 4px dashed sandybrown;
+    animation: span4 linear 10s infinite forwards;
+}
+
+@keyframes span4 {
+    from {
+        transform: rotate(0)
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* span5 */
+.span5::after {
+    border: 1px solid sandybrown;
+}
+
+.span5:hover::after {
+    animation: span5 ease-out 0.3s;
+}
+
+@keyframes span5 {
+    0% {
+        opacity: 0.3;
+    }
+
+    40% {
+        opacity: 0.5;
+        box-shadow: 0 0 0 1px sandybrown,
+            0 0 5px 5px sandybrown,
+            0 0 0 5px sandybrown;
+    }
+
+    100% {
+        box-shadow: 0 0 0 2px sandybrown,
+            0 0 5px 5px sandybrown,
+            0 0 0 5px sandybrown;
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
