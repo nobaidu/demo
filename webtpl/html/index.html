@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>webrem</title>
+    <title></title>
     <script src="/js/rem.js"></script>
     <link rel="stylesheet" href="/css/animate.min.css">
     <link rel="stylesheet" href="/css/swiper.min.css">
@@ -15,23 +15,20 @@
 
 <body>
 
-    <img class="m-close" src="/imgs/index/m-close.jpg" alt="" srcset="">
-    <img class="m-menu" src="/imgs/index/m-menu.jpg" alt="" srcset="">
-    <header class="head">
-        <div class="head-content">
-
-            <a class="head-logo" href="">
-                <img src="/imgs/index/logo.png" alt="" srcset="">
+    <img class="m-close none fixed top-0 right-0 inline-block" src="/imgs/index/m-close.jpg" alt="" srcset="">
+    <img class="m-menu none fixed top-0 right-0 inline-block" src="/imgs/index/m-menu.jpg" alt="" srcset="">
+    <header class="head fixed top-0 left-0 width-100 ovhidden">
+        <div class="head-content relative margin-0-auto width-1200 height-100 overflow-hidden">
+            <a class="head-logo inline-block float-left height-auto" href="">
+                <img src="/imgs/index/logo.png" alt="LOGO" srcset="">
             </a>
-            <nav class="head-nav">
-                <ul class="nav-ul">
-                    <li class="nav-li"><a class="nav-a" href="">首页</a></li>
-                    <li class="nav-li"><a class="nav-a" href="">关于</a></li>
-                    <li class="nav-li"><a class="nav-a" href="">产品</a></li>
-                    <li class="nav-li"><a class="nav-a" href="">新闻</a></li>
-                    <li class="nav-li"><a class="nav-a" href="">联系</a></li>
-                </ul>
-            </nav>
+            <ul class="head-nav float-right height-auto flex space-between">
+                <li class="nav-li relative"><a class="nav-a inline-block width-100 text-center" href="">首页</a></li>
+                <li class="nav-li relative"><a class="nav-a inline-block width-100 text-center" href="">关于</a></li>
+                <li class="nav-li relative"><a class="nav-a inline-block width-100 text-center" href="">产品</a></li>
+                <li class="nav-li relative"><a class="nav-a inline-block width-100 text-center" href="">新闻</a></li>
+                <li class="nav-li relative"><a class="nav-a inline-block width-100 text-center" href="">联系</a></li>
+            </ul>
         </div>
     </header>
 
@@ -53,45 +50,45 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <main class="main">
+    <main class="main w100">
 
     </main>
 
     <!-- 弹窗 -->
-    <div class="pop-outer">
-        <div class="pop">
-            <div class="pop-head">炭鲜么么鱼提醒您</div>
-            <div class="pop-con">
+    <div class="pop-outer none fixed top-0 left-0 width-100wv height-100vh overflow-hidden">
+        <div class="pop fixed text-center overflow-hidden">
+            <div class="pop-head color-fff bold">提醒您</div>
+            <div class="pop-con bold">
                 <div class="pop-text">姓名不能为空</div>
                 <span class="pop-btn">确定</span>
             </div>
         </div>
     </div>
 
-    <div class="foot">
-        <div class="foot-content">
-            <div class="foot-l">
-                <p class="foot-l-tel">400-0560-799</p>
+    <div class="foot width100 overflow-hidden">
+        <div class="foot-content width-1200">
+            <div class="foot-l float-left text-left c000">
+                <p class="foot-l-tel margin-0">400-0560-799</p>
                 <p class="foot-l-cmp">济南悦顺餐饮管理有限公司</p>
                 <img class="foot-l-logo" src="/imgs/index/logo.png" alt="">
             </div>
-            <div class="foot-r">
+            <div class="foot-r float-right">
                 <form class="foot-form" action="">
-                    <div class="input-wrap">
+                    <div class="input-wrap inline-block overflow-hidden">
                         <label for="name">姓名：</label>
                         <input type="text" class="name input">
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap inline-block overflow-hidden">
                         <label for="tel">电话：</label>
                         <input type="text" class="tel input">
                     </div>
-                    <div class="input-wrap">
+                    <!-- <div class="input-wrap inline-block">
                         <label for="email">邮箱：</label>
                         <input type="text" class="email input">
-                    </div>
-                    <div class="input-wrap text-wrap">
+                    </div> -->
+                    <div class="text-wrap overflow-hidden">
                         <label for="text">留言：</label>
-                        <textarea type="text" class="textarea"></textarea>
+                        <textarea type="text" class="textarea float-right"></textarea>
                     </div>
 
                     <div class="btn-wrap">
