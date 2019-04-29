@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>event</title>
+    <style>
+        .box {
+            width: 400px;
+            height: auto;
+            margin: 50px auto;
+        }
+
+        .todo-head {
+            position: relative;
+        }
+
+        .todo-text {
+            margin: 0;
+            padding: 10px;
+            color: #fff;
+            background: #000;
+        }
+
+        .todo-plus {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            right: 0;
+            top: 0;
+            font-weight: bold;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .todo-content {
+            display: none;
+        }
+
+        .todo-content input {
+            width: 100%;
+            height: 35px;
+            padding: 0 10px;
+            line-height: 35px;
+            border: 2px solid #000;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="todo-head">
+            <h3 class="todo-text">todolist</h3>
+            <span class="todo-plus">+</span>
+        </div>
+        <div class="todo-content">
+            <input type="text" placeholder="输入内容">
+        </div>
+    </div>
+
+    <script>
+        var trigger = false;
+        var todo_head = document.querySelector('.todo-head');
+        var todo_content = document.querySelector('.todo-content');
+
+        todo_head.addEventListener(
+            "click",
+            function (e) {
+                var e = e || window.event,
+                    tar = e.target || e.srcElement,
+                    tarClass = tar.className;
+
+                if (tarClass === 'todo-plus') {
+                    if (trigger) {
+                        trigger = false;
+                        todo_content.style.display = 'none';
+                    } else {
+                        trigger = true;
+                        todo_content.style.display = 'block';
+                    }
+                }
+            },
+            false
+        );
+    </script>
+</body>
+
+</html>

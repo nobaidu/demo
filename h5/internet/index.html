@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>net</title>
+</head>
+
+<body>
+
+    <script>
+        window.onload = function () {
+            var net = window.navigator.onLine;
+            if (net) {
+                console.log('联网状态');
+            } else {
+                console.log('断网状态...');
+            }
+
+            // 监听断网
+            window.onoffline = function () {
+                console.log('网络已断开...');
+            }
+            // 监听联网
+            window.ononline = function () {
+                console.log('联网已连接');
+            }
+        }
+    </script>
+</body>
+
+</html>
