@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>faker</title>
+    </head>
+    <body>
+        <iframe class="frame" src="./index.html" frameborder="0"></iframe>
+
+        <script>
+            let frame = document.querySelector(".frame");
+            //iframe下的window对象
+            let frameWin = frame.contentWindow;
+            //iframe下的document对象
+            let frameDoc = frame.contentWindow.document;
+            console.log(frameDoc);
+        </script>
+    </body>
+</html>

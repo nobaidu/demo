@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>origin</title>
+    </head>
+    <body>
+        <input type="text" class="pwd" value="3301" />
+        <script>
+            // if (window.top != window.self) {
+            //     console.log("被嵌套");
+            // }
+
+            try {
+                top.location.hostname; //检测是否出错 //如果没有出错，则降级处理
+                if (top.location.hostname != window.location.hostname) {
+                    top.location.href = window.location.href;
+                }
+            } catch (e) {
+                top.location.href = window.location.href;
+            }
+        </script>
+    </body>
+</html>
