@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>media</title>
+    </head>
+    <body>
+        <video src="" class="video"></video>
+        <button class="playRecord">录制</button>
+        <button class="stopRecord">结束</button>
+        <button class="download">下载</button>
+        <script>
+            navigator.mediaDevices
+                .getUserMedia({ audio: true, video: true })
+                .then(function(stream) {
+                    var recorder = new MediaRecorder(stream);
+                    var recorderButton = document.querySelector(".playRecord");
+                    var video = document.querySelector("video");
+
+                    //把获取的视屏流和音频流放到界面的video容器里
+                    video.src = URL.createObjectURL(stream);
+                    recorderButton.onclick = function() {
+                        this.textContent === "开始录制"
+                            ? video.play()
+                            : video.pause();
+                        this.textContent === "开始录制"
+                            ? recorder.start()
+                            : recorder.stop();
+                        this.textContent =
+                            this.textContent === "开始录制"
+                                ? "停止"
+                                : "开始录制";
+                    };
+                    //得到有效数据  收集数据
+                    var buffers = null;
+                    var download = document.querySelector(".download");
+                    recorder.ondataavailable = function(event) {
+                        //收集媒体设备获得到的可以使用的数据
+                        console.log(event.data);
+                        buffers = event.data;
+                    };
+                    recorder.onstop = function() {
+                        //停止录制时触发函数
+                        var url = URL.createObjectURL(buffers);
+                        download.href = url;
+                        buffers = null;
+                    };
+                })
+                .catch(function(error) {
+                    alert(error); //抛出异常错误
+                });
+
+                
+        </script>
+    </body>
+</html>
