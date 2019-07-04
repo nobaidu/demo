@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/new.css">
 </head>
+
 <body>
     {dede:include filename='head.html'/}
 
@@ -28,16 +30,16 @@
 
             <div class="news-list">
                 {dede:list pagesize='5' orderby='pubdate'}
-                    <a class="new-item" href="[field:arcurl/]">
-                        <div class="new-img">[field:image/]</div>
-                        <div class="new-con">
-                            <p class="new-con-title">[field:title/]</p>
-                            <p class="new-con-brief">[field:description /]</p>
-                            <p class="new-con-time">[field:pubdate function="GetDateMK(@me)"/]</p>
-                        </div>
-                    </a>
-                {/dede:list}                    
-              
+                <a class="new-item" href="[field:arcurl/]">
+                    <div class="new-img">[field:image/]</div>
+                    <div class="new-con">
+                        <p class="new-con-title">[field:title/]</p>
+                        <p class="new-con-brief">[field:description /]</p>
+                        <p class="new-con-time">[field:pubdate function="GetDateMK(@me)"/]</p>
+                    </div>
+                </a>
+                {/dede:list}
+
                 <div class="news-page">{dede:pagelist listitem="index,end,pre,next,pageno" listsize="5"/}</div>
             </div>
         </div>
@@ -49,4 +51,5 @@
     <script src="/js/scrollReveal.js"></script>
     <script src="/js/common.js"></script>
 </body>
+
 </html>
