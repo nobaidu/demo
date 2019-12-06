@@ -26,6 +26,10 @@ $(function () {
     })
 })
 
+
+$(function(){
+    new WOW.init()
+})
 //表单验证
 $(function () {
     $('.btn').click(function () {
